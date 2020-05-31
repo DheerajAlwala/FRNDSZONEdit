@@ -29,6 +29,7 @@ public class OTPActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
     private EditText editText;
+    String phonenumber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +41,7 @@ public class OTPActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progressbar);
         editText = findViewById(R.id.editTextCode);
-        String phonenumber = getIntent().getStringExtra("phonenumber");
+        phonenumber = getIntent().getStringExtra("phonenumber");
         assert phonenumber != null;
         Log.v("phoneNumber-2",phonenumber);
 
@@ -79,6 +80,7 @@ public class OTPActivity extends AppCompatActivity {
 
                             Intent intent = new Intent(OTPActivity.this, DetailsActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            intent.putExtra("phonenumber", phonenumber);
 
                             startActivity(intent);
 

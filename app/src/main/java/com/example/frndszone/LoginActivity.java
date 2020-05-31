@@ -15,7 +15,11 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+
 public class LoginActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
     private Button btn;
     @SuppressLint("WrongViewCast")
     @Override

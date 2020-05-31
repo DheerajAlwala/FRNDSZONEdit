@@ -22,8 +22,8 @@
             android:id="@+id/spinnerCountries"
             android:layout_width="114dp"
             android:layout_height="45dp"
-            android:background="#B16C06"
-            android:outlineSpotShadowColor="#fff" />
+            android:background="@color/btncolor"
+            android:outlineSpotShadowColor="@color/btncolor" />
 
         <EditText
             android:id="@+id/editTextPhone"
@@ -45,7 +45,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="88dp"
-        android:background="#875308"
+        android:background="@color/btncolor"
         android:text="Send OTP"
         android:textAllCaps="false"
         android:textColor="@android:color/background_light"
