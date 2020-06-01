@@ -76,6 +76,7 @@ public class DetailsActivity extends AppCompatActivity  {
                 hashMap.put("phoneno",phonenumber);
                 hashMap.put("firstname",first.getText().toString());
                 hashMap.put("lastname",last.getText().toString());
+                //hashMap.put("imageUri","default");
                 reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
