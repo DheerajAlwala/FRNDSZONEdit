@@ -81,8 +81,8 @@ public class OTPActivity extends AppCompatActivity {
                             Intent intent = new Intent(OTPActivity.this, DetailsActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             intent.putExtra("phonenumber", phonenumber);
-
                             startActivity(intent);
+                            finish();
 
                         } else {
                             Toast.makeText(OTPActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();

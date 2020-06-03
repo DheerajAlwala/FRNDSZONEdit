@@ -3,4 +3,13 @@
 <item
     android:id="@+id/Logout"
     android:title="Logout" />
+    <item
+        android:id="@+id/settings"
+        android:title="setting" />
+    <item
+        android:id="@+id/invite"
+        android:title="Invite a friend" />
+    <item
+        android:id="@+id/rating"
+        android:title="Rate this App" />
 </menu>

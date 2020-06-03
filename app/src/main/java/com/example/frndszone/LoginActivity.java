@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
                 intent.putExtra("phonenumber", phonenumber);
                 Log.v("phoneNumber",phonenumber);
                 startActivity(intent);
-
+                finish();
             }
         });
 
