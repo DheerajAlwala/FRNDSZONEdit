@@ -1,10 +1,5 @@
 package com.example.frndszone;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -16,6 +11,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,7 +23,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -35,6 +34,7 @@ public class DetailsActivity extends AppCompatActivity  {
     Uri imageuri;
     ImageButton btn_next;
     EditText first,last;
+    User user;
     String phonenumber,firstname,lastname;
     //Firebase declarations
     FirebaseAuth mAuth;
@@ -55,6 +55,8 @@ public class DetailsActivity extends AppCompatActivity  {
         last=(EditText)findViewById(R.id.last_name);
         mAuth=FirebaseAuth.getInstance();
 
+        imageuri=Uri.parse(String.valueOf(R.id.profile_img));
+
 
         profileimg.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -71,13 +73,18 @@ public class DetailsActivity extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 FirebaseUser firebaseUser=mAuth.getCurrentUser();
+                assert firebaseUser != null;
                 String userid=firebaseUser.getUid();
                 reference= FirebaseDatabase.getInstance().getReference("Users").child(userid);
                 HashMap<String,String> hashMap=new HashMap<>();
                 hashMap.put("phoneno",phonenumber);
                 hashMap.put("firstname",first.getText().toString());
                 hashMap.put("lastname",last.getText().toString());
-                //hashMap.put("imageUri","default");
+                hashMap.put("imageUri",imageuri.toString());
+                user.setFname(first.getText().toString());
+                user.setLname(last.getText().toString());
+                user.setpNo(phonenumber);
+                user.setImguri(imageuri);
                 reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -99,6 +106,7 @@ public class DetailsActivity extends AppCompatActivity  {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==PICK_IMAGE&&resultCode==RESULT_OK){
+            assert data != null;
             imageuri=data.getData();
             try {
                 Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),imageuri);

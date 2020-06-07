@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WelcomeActivity"></activity>
+        <activity android:name=".ProfileActivity"></activity>
+
+        <activity android:name=".WelcomeActivity" />
         <activity android:name=".ChatActivity" />
         <activity android:name=".DetailsActivity" />
         <activity android:name=".OTPActivity" />
@@ -22,6 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
